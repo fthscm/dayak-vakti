@@ -1,0 +1,66 @@
+body {
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+#game {
+    text-align: center;
+    position: relative;
+}
+
+#can {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#character {
+    width: 250px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+/* titreme efekti */
+.shake {
+    animation: shake 0.15s;
+}
+
+@keyframes shake {
+    0% { transform: translate(0); }
+    25% { transform: translate(-5px, 0); }
+    50% { transform: translate(5px, 0); }
+    75% { transform: translate(-5px, 0); }
+    100% { transform: translate(0); }
+}
+
+/* silah menüsü */
+#weapons {
+    margin-top: 20px;
+}
+
+.weapon {
+    width: 70px;
+    margin: 10px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 10px;
+}
+
+.weapon.selected {
+    border: 3px solid red;
+}
+
+/* vuruşta çıkan silah */
+#hitWeapon {
+    position: absolute;
+    width: 80px;
+    pointer-events: none;
+    display: none;
+    transform: translate(-50%, -50%) rotate(-20deg);
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+    color: pink;
+}
