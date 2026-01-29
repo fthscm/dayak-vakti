@@ -1,54 +1,47 @@
-console.log("JS başladı");
+let can = 20;
 
 const character = document.getElementById("character");
 const canText = document.getElementById("can");
-const message = document.getElementById("message");
+const bubble = document.getElementById("bubble");
 const weapons = document.querySelectorAll(".weapon");
-const hitWeapon = document.getElementById("hitWeapon");
 
-let can = 10;
-let seciliSilah = "glove";
+const normalImg = "character.png";
+const hitImg = "character_hit.png";
 
-// silah seçme
-weapons.forEach(weapon => {
-    weapon.addEventListener("click", () => {
-        weapons.forEach(w => w.classList.remove("selected"));
-        weapon.classList.add("selected");
-        seciliSilah = weapon.dataset.weapon;
+const messages = {
+    17: "elini korkak alıştırma canım",
+    13: "vurduğun yerde gül bitiyor",
+    9: "salak de",
+    6: "mal de",
+    3: "geri zekalı de",
+    1: "ellerine sağlık sarışın bombam"
+};
+
+/* silah seçimi */
+weapons.forEach(w => {
+    w.addEventListener("click", () => {
+        document.body.className = "";
+        document.body.classList.add(w.dataset.weapon);
     });
 });
 
-// karaktere vurma
-character.addEventListener("click", (e) => {
+/* vurma */
+character.addEventListener("click", () => {
     if (can <= 0) return;
 
     can--;
-    canText.innerText = "❤️ " + can;
+    canText.innerText = `❤️ ${can}`;
 
-    // titreme
-    character.classList.add("shake");
+    character.src = hitImg;
+    character.classList.add("hit");
+
     setTimeout(() => {
-        character.classList.remove("shake");
+        character.src = normalImg;
+        character.classList.remove("hit");
     }, 150);
 
-    // yüz değişimi
-    character.src = "character_hit.png";
-    setTimeout(() => {
-        character.src = "character.png";
-    }, 200);
-
-    // silahı göster
-    hitWeapon.src = seciliSilah + ".png";
-    hitWeapon.style.left = e.pageX + "px";
-    hitWeapon.style.top = e.pageY + "px";
-    hitWeapon.style.display = "block";
-
-    setTimeout(() => {
-        hitWeapon.style.display = "none";
-    }, 150);
-
-    // can bitti mesajı
-    if (can === 0) {
-        message.innerText = "Umarım beni dövmek seni rahatlatmıştır ömrüm ❤️";
+    if (messages[can]) {
+        bubble.innerText = messages[can];
+        bubble.style.display = "block";
     }
 });
