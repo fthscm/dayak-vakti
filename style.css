@@ -1,6 +1,10 @@
 body {
-    background: black;
-    color: white;
+    margin: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     font-family: Arial, sans-serif;
 }
 
@@ -10,57 +14,69 @@ body {
 }
 
 #can {
+    color: red;
     font-size: 24px;
     margin-bottom: 10px;
 }
 
+#character-container {
+    position: relative;
+    display: inline-block;
+}
+
 #character {
-    width: 250px;
-    cursor: pointer;
-    transition: transform 0.1s;
+    width: 220px;
+    cursor: none;
 }
 
-/* titreme efekti */
-.shake {
-    animation: shake 0.15s;
+#bubble {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 14px 22px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    display: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
 }
 
-@keyframes shake {
-    0% { transform: translate(0); }
-    25% { transform: translate(-5px, 0); }
-    50% { transform: translate(5px, 0); }
-    75% { transform: translate(-5px, 0); }
-    100% { transform: translate(0); }
-}
-
-/* silah menüsü */
 #weapons {
     margin-top: 20px;
 }
 
 .weapon {
-    width: 70px;
-    margin: 10px;
+    width: 60px;
+    margin: 0 10px;
     cursor: pointer;
-    border: 3px solid transparent;
-    border-radius: 10px;
 }
 
-.weapon.selected {
-    border: 3px solid red;
+/* imleçler */
+body.glove {
+    cursor: url("glove.png") 32 32, auto;
 }
 
-/* vuruşta çıkan silah */
-#hitWeapon {
-    position: absolute;
-    width: 80px;
-    pointer-events: none;
-    display: none;
-    transform: translate(-50%, -50%) rotate(-20deg);
+body.knife {
+    cursor: url("knife.png") 32 32, auto;
 }
 
-#message {
-    margin-top: 20px;
-    font-size: 20px;
-    color: pink;
+body.gun {
+    cursor: url("gun.png") 32 32, auto;
+}
+
+/* titreme */
+.hit {
+    animation: shake 0.2s;
+}
+
+@keyframes shake {
+    0% { transform: translate(0); }
+    25% { transform: translate(-5px, 5px); }
+    50% { transform: translate(5px, -5px); }
+    75% { transform: translate(-5px, -5px); }
+    100% { transform: translate(0); }
 }
