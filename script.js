@@ -14,7 +14,7 @@ const messages = {
     9: "salak de",
     6: "mal de",
     3: "geri zekalı de",
-    1: "ellerine sağlık sarışın bombam"
+    1: "ellerine sağlık Miroşummm"
 };
 
 /* silah seçimi */
